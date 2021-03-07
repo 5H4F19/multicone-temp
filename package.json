@@ -1,0 +1,25 @@
+{
+  "name": "multicone",
+  "version": "1.0.0",
+  "preferGlobal": true,
+  "bin": "./index.js",
+  "description": "An production-ready framework based on express",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "shafiq-soweb",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "colors": "^1.4.0",
+    "commander": "^7.1.0",
+    "env": "0.0.2",
+    "express": "^4.17.1",
+    "inquirer": "^8.0.0",
+    "log-symbols": "^4.0.0",
+    "ora": "^5.3.0",
+    "progress-bar": "^0.1.1"
+  }
+}

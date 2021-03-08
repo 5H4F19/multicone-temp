@@ -1,6 +1,6 @@
 {
   "name": "multicone",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "preferGlobal": true,
   "bin": "./index.js",
   "description": "An production-ready framework based on express",

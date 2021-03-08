@@ -1,11 +1,13 @@
 import fs from 'fs'
-import {exec} from "child_process";
+import {exec, execSync} from "child_process";
 import ora from 'ora'
+import open from 'open'
 import colors from 'colors'
 import { packageData } from './data/package.data.js';
 import { serverData } from './data/server.data.js';
 import { auth } from './maker/auth.gen.js';
 import util from 'util'
+import {initError} from './utils/console.js'
 
 const writeFile = util.promisify(fs.writeFile)
 const mkdir =util.promisify(fs.mkdir)
@@ -32,7 +34,7 @@ export const makeFile =async(name, ans) => {
   
   }
     if (stdout) {
-        exec(`multicone make:auth`, (error, stdout, stderr) => { })
+  
         console.log(`${stdout}\n\n`);
         spinner.color = 'yellow'
         spinner.succeed(`${colors.bold('Created Succesfully at')}${process.cwd()+'/'+name}\n`)
@@ -63,3 +65,17 @@ export const makeFile =async(name, ans) => {
   
    
 }
+
+export const serve = async () => {
+  const json = process.cwd() + '/package.json'
+
+  const shell = util.promisify(exec)
+  
+}
+
+export const openServer = () => {
+  open('http://127.0.0.1:4000/')
+  
+}
+
+

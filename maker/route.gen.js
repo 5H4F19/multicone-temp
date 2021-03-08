@@ -51,7 +51,7 @@ const importRouteToServer = (name) => {
     const line = data.filter(x => x.includes('app.listen') && x)
   
     const index = data.indexOf(line[0])
-  
+    data.splice(0,0,`import ${name}Routes from './routes/${name}.js'`)
     data.splice(index, 0, string)
     const text = data.join('\n')
     fs.writeFileSync('server.js', text)

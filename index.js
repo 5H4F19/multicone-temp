@@ -1,9 +1,14 @@
 #!/usr/bin/env node
 
-import { makeFile } from './maker.js';
+import { makeFile, serve , openServer} from './maker.js';
 import colors from 'colors'
 import GenModel from './maker/model.gen.js';
 import GenCntlr from './maker/cntlr.gen.js';
+import modelData from './data/model.data.js'
+import controllerData from './data/cntlr.data.js'
+import routeData from './data/route.data.js'
+
+
 import program from 'commander'
 import pkg from 'inquirer';
 import { auth, MRC } from './maker/auth.gen.js';
@@ -25,16 +30,15 @@ program.version('1.0.0')
 
 program
     .command('init <name>')
-    .alias('-s')
+    .alias('s')
     .description('Initiates the applicaiton')
     .action((name) => {
-    // prompt(questions).then(ans=>makeFile(name,ans)).then(()=>auth());
-    makeFile(name)    
+        makeFile(name)  
     })
 
 program
     .command('make:model <name>')
-    .alias('-m')
+    .alias('m')
     .description('Creates a model')
     .action((name) => {
         GenModel(name,modelData)
@@ -42,7 +46,7 @@ program
 
 program
     .command('make:controller <name>')
-    .alias('-c')
+    .alias('c')
     .description('Creates a controller')
     .action((name) => {
         GenCntlr(name,controllerData)
@@ -50,7 +54,7 @@ program
 
 program
     .command('make:route <name>')
-    .alias('-r')
+    .alias('r')
     .description('Creates a router')
     .action((name) => {
         GenRoute(name,routeData)
@@ -58,7 +62,7 @@ program
 
 program
     .command('make:MRC <name>')
-    .alias('-r')
+    .alias('r')
     .description('Creates a MRC model')
     .action((name) => {
         MRC(name)
@@ -66,11 +70,22 @@ program
 
 program
     .command('make:auth')
-    .alias('-a')
+    .alias('a')
     .description('Integretes authentication')
     .action(() => {
         auth()
     })      
 
+program
+.command('serve')
+.alias('s')
+.description('Run server and open in browser')
+    .action(async () => {
+    
+   console.log(await serve())
+    
+})   
 
 program.parse(process.argv)
+
+

@@ -7,6 +7,7 @@ import { packageData } from './data/package.data.js';
 import { serverData } from './data/server.data.js';
 import { auth } from './maker/auth.gen.js';
 import util from 'util'
+import htmldata from './data/html.data.js'
 import {initError} from './utils/console.js'
 
 const writeFile = util.promisify(fs.writeFile)
@@ -17,8 +18,12 @@ export const makeFile =async(name, ans) => {
     
   const json = packageData(name)
   const data = serverData(ans)
+  const html = htmldata()
+  const publicFolder = process.cwd() + '/public'
   
   await mkdir(name)
+  await mkdir(`${name}/public`)
+  await writeFile(`${name}/public/index.html`,html) 
   await writeFile(`${name}/package.json`, json)
   await writeFile(`${name}/server.js`, data)
   
@@ -69,8 +74,18 @@ export const makeFile =async(name, ans) => {
 export const serve = async () => {
   const json = process.cwd() + '/package.json'
 
-  const shell = util.promisify(exec)
-  
+  var child = exec('npm start', { async: true })
+  child.stdout.on('data', function (data) {
+    console.log(data);
+    if (data.includes('Server is running')) {
+      open('http://127.0.0.1:3000', {app: ['google chrome', '--incognito']}) 
+    }
+  })
+  child.stderr.on('data', function (data) {
+    if (data) {
+      console.log('Change the port');
+    }
+  })
 }
 
 export const openServer = () => {

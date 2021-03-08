@@ -80,10 +80,8 @@ program
 .command('serve')
 .alias('s')
 .description('Run server and open in browser')
-    .action(async () => {
-    
-   console.log(await serve())
-    
+    .action(async () => {   
+     await serve()   
 })   
 
 program.parse(process.argv)

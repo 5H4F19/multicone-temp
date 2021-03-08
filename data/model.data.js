@@ -36,7 +36,7 @@ userSchema.methods.methodName = async function (params) {
 }
 */
 
-const ${name} = mongoose.model(${name}, ${modelName}Schema)
+const ${name} = mongoose.model('${name}', ${modelName}Schema)
 export default ${name}` 
     
 }

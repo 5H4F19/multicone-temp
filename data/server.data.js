@@ -1,6 +1,6 @@
-export const serverData = (ans) => {
+export const serverData = () => {
     return`import express from 'express'
-    const app = express()
-    app.listen(3000,()=>console.log('${ans.nothing}'))
-    `
+const app = express()
+app.listen(3000,()=>console.log('Server is running'))
+`
 }

@@ -1,4 +1,4 @@
-export const data = (params) => {
+const data = (params) => {
     return`import mongoose from 'mongoose'
 import pkg from 'bcryptjs'
 const { compare, genSalt, hash } = pkg
@@ -44,3 +44,4 @@ userSchema.pre('save', async function (next) {
 const User = mongoose.model('User', userSchema)
 export default User`
 }
+export default data

@@ -8,7 +8,6 @@ export const generate = (type, name,data) => {
     type === 'routes' ? naming = name + 'Routes': naming = naming
     
     fs.mkdir(type, () => { })
-     console.log(data);
     fs.writeFile(`${type}/${naming}.js`, data(name), () => { }) 
 
     success(capitalize(type))

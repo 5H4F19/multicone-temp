@@ -2,7 +2,6 @@ import colors from 'colors'
 import logSymbols from 'log-symbols';
 
 
-
 export const warning = () => {
     console.log(`\n${colors.bgRed('File already exists')}\n`)
 }

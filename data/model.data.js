@@ -1,6 +1,6 @@
 import capitalize from "../utils/capitalize.js"
 
-export const data = (modelName) => {
+const data = (modelName) => {
       const name = capitalize(modelName)
 return `import mongoose from 'mongoose'
 
@@ -40,3 +40,4 @@ const ${name} = mongoose.model(${name}, ${modelName}Schema)
 export default ${name}` 
     
 }
+export default data

@@ -1,4 +1,4 @@
-export const data = (name) => {
+const data = (name) => {
     return`import express from "express"
 const ${name}Routes = express.Router()
 /*
@@ -12,3 +12,4 @@ ${name}Routes
 */
 export default ${name}Routes`
 }
+export default data

@@ -1,6 +1,6 @@
 import capitalize from "../utils/capitalize.js"
 
-export const data = (cntlrname) => {
+const data = (cntlrname) => {
     const name = capitalize(cntlrname)
 return `/*
 @@ ROUTE   /api/{}/create
@@ -55,3 +55,4 @@ export const delete${name}  = async (req, res) => {
     }
 }`
 }
+export default data
